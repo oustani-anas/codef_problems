@@ -1,2 +1,2 @@
 # codef_problems
-some c++ problems
+some codeforces problems resolving by using C++
