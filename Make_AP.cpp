@@ -13,8 +13,9 @@ int main(){
     vector<ll> vect(3);
     for (ll i = 0; i < n; i++)
     {
-        for (ll i = 0; i < 3; i++)
+        for (ll i = 0; i < 3; i++){
             cin >> vect[i];
+        }
         sort(vect.begin(), vect.end());
         if(vect[1] % vect[0] == 0 && vect[2] % vect[0] == 0)
             cout << "yes" << endl;
