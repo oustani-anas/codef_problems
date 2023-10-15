@@ -17,10 +17,20 @@ int main(){
             cin >> vect[i];
         }
         sort(vect.begin(), vect.end());
-        if(vect[1] % vect[0] == 0 && vect[2] % vect[0] == 0)
-            cout << "yes" << endl;
-        else
-            cout << "no" << endl;
+        if(vect[1] == 1){
+            ll md = vect[2] - vect[0];
+            if(md % 2 == 0)
+                cout << "yes" << endl;
+            else
+                cout << "no" << endl;
+        }
+        else {
+            if(vect[1] % vect[0] == 0 && vect[2] % vect[0] == 0)
+                cout << "yes" << endl;
+            else
+                cout << "no" << endl;
+        }
+
     }
     
 }
