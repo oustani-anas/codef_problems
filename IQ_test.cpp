@@ -36,6 +36,7 @@ int main(){
             if(vect[i] % 2 == 0){
                 cout << i + 1 << endl;
                 return(0);
+                
             }
         }    
     }
