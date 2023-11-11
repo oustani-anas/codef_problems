@@ -1,38 +1,56 @@
 
+
 #include <iostream>
-#include <string>
-#include <map>
 #include <vector>
-#include <cmath>
+#include <string>
+#include <set>
+#include <map>
+#include <queue>
+#include <deque>
+#include <stack>
+#include <utility>
 #include <iomanip>
+#include <algorithm>
+#include <cmath>
+#include <climits>
+#include <cstdlib>
+#include <fstream>
+
 #define ll long long
-#define dd double
-#define endl '\n'
- 
+
 using namespace std;
+
+ll n, m, a, b;
+
+void calc(ll x = 0, ll cost = 0)
+{
+    if (x >= n)
+    {
+        cout << cost << endl;
+        exit(0);
+    }
+
+    if (b < a * min(m, n - x))
+    {
+        calc(x+m, cost + b);
+        return ;
+    }
+
+    calc(x + 1, cost + a);
+}
+
+
+void solve()
+{
+    cin >> n >> m >> a >> b;
+
+    calc();
+}
 
 int main()
 {
-    ll n, m, a, b;
-    ll rubl, tmp;
-    cin >> n >> m >> a >> b;
-    tmp = n;
-    if(b / m <= a)
-    {
-        while(tmp > 0)
-        {
-            if(tmp == 0)
-                break;
-            rubl += b;
-            if (tmp -= m >= 0){
-                tmp -= m;
-                rubl += b;
-            }
-            else if (tmp -= n >= 0){
-                tmp -= n;
-                rubl += a;
-            }
-        }
-        cout << rubl << endl;
-    }
+    ios::sync_with_stdio(false);
+    cin.tie(0);
+    cout.tie(0);
+    solve();
 }
