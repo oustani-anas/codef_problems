@@ -15,7 +15,21 @@ ll n, odd, even;
 
 ll is_odd(vector<ll> &vect, ll n, ll x)
 {
-    
+    if(odd > 0)
+        odd--, x--;
+    else return(0);
+    while (n--)
+    {   
+        if(x == 1 && even >= 1)
+            return(1);
+        if(odd >= 2 && x != 0)
+            odd -= 2, x -= 2;
+        if(even >= 2 && x != 0)
+            even -= 2, x -= 2;
+        if(x == 0)
+            return(1);
+    }
+    return(0);
 }
 
 
@@ -36,10 +50,9 @@ int main()
             else 
                 odd++;         
         }
-        // cout << "odd =  " << odd << endl;
         if(is_odd(a, n, x))
-            cout << "YES" << endl;
+            cout << "yes" << endl;
         else
-            cout << "NO" << endl;
+            cout << "no" << endl;
     }
 }
