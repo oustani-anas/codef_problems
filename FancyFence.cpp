@@ -13,10 +13,16 @@ using namespace std;
 
 int main()
 {
-    ll a, t;
+    dd a, t;
+    dd n;
     cin >> t;
     while(t--)
     {
-        
+        cin >> a;
+        n = 360 / (180 - a);
+        if(n != (int)n)
+            cout << "NO" << endl;
+        else
+            cout << "YES" << endl;
     }
 }
