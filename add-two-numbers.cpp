@@ -18,19 +18,38 @@ typedef struct ListNode {
 
 ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
 
-    int s1 = 0, s2 = 0;
+    int rest = 0;
     ListNode * h1 = l1;
     ListNode * h2 = l2;
     ListNode * sum = new ListNode();
+    ListNode * adr = sum;
     
+    while(h1 != NULL && h2 != NULL && sum != NULL) {
+        int sm = 0;
+        if(h1->val + h2->val >= 10) {
+            sm = (h1->val + h2->val) % 10;
+            rest = 1;
+        }
+        else {
+            sm = h1->val + h2->val + rest;
+            rest = 0;
+        }
+        
+        ListNode * node = new ListNode(sm);
+        adr->next = node;
+        adr = adr->next;
+        //sum = sum->next;
+        h1 = h1->next;
+        h2 = h2->next;
+    }
 
-    return sum;
+    return sum->next;
 }
 
 int main()
 {
     int x, y, z;
-    ListNode *res;
+    ListNode *res, *h;
     ListNode* n1 = new ListNode(2);
     ListNode* n2 = new ListNode(4);
     ListNode* n3 = new ListNode(3);
@@ -45,7 +64,17 @@ int main()
     n4->next = n5;
     n5->next = n6;
     res = addTwoNumbers(n1, n4);
-    cout << res->val << endl;
+    h = res;
+
+    //cout << res->val << ", " << res->next->val;
+
+    while (h)
+    {
+        cout << h->val << " ";
+        h = h->next;
+    }
+    
+    //cout << res->val << endl;
 
     delete n1;
     delete n2;
