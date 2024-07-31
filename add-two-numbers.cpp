@@ -22,26 +22,7 @@ ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
     ListNode * h1 = l1;
     ListNode * h2 = l2;
     ListNode * sum = new ListNode();
-    vector<int> vect1;
-    vector<int> vect2;
-
-    while (h1 != nullptr)
-    { 
-        vect1.push_back(h1->val);
-        h1 = h1->next;
-    }
-    for (int i = vect1.size() - 1; i >= 0; i--)
-        s1 = s1 * 10 + vect1[i];
     
-    while (h2 != nullptr)
-    { 
-        vect2.push_back(h2->val);
-        h2 = h2->next;
-    }
-    for (int i = vect2.size() - 1; i >= 0; i--)
-        s2 = s2 * 10 + vect2[i];
-    
-    sum->val = s2 + s1;
 
     return sum;
 }
