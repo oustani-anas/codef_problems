@@ -14,19 +14,15 @@ int reached(ll x, ll y) {
             i = i % n;
             if(s[i] == 'N'){
                 y++;
-                ns++;
             }
             else if(s[i] == 'E') {
                 x++;
-                we++;
             }
             else if(s[i] == 'W') {
                 x--;
-                we--;
             }
             else if(s[i] == 'S') {
                 y--;
-                ns--;
             }
             if(i == n - 1 && ns == 0 && we == 0)
                 break;
