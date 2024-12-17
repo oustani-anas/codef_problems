@@ -11,7 +11,9 @@ using namespace std;
 string funct(string str) 
 {
     string revstr = str;
-    revstr.reserve();
+    reverse(revstr.begin(), revstr.end());
+    
+    // cout << "str is " << str << " reversed string " << revstr << endl;
     for(int i = 0; i < revstr.size(); i++) {
         if(revstr[i] == 'p')
             revstr[i] = 'q';
