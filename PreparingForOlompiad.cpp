@@ -1,4 +1,5 @@
 
+
 #include <iostream>
 #include <string>
 #include <map>
@@ -23,7 +24,7 @@ int main()
         for(ll i = 0; i < n; i++) cin >> b[i];
         // cout << a[0] << " " << b[0] << endl;
         b.push_back(0);
-        for(int i = 0; i < n; i++) {
+        for ( int i = 0; i < n; i++ ) {
             if(a[i] > b[i + 1]){
                 maxd += a[i] - b[i + 1];
             };
