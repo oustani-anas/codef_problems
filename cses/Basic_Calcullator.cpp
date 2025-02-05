@@ -7,6 +7,7 @@
 #include <iomanip>
 #include <algorithm>
 #include <cstdlib>
+#include <sstream>
 #define ll long long
 #define dd double
 #define endl '\n'
@@ -14,40 +15,41 @@
 using namespace std;
 
 int calculate(string s) {
-    vector<int> nums;
-    vector<char> operats;
+    vector<int>     nums;
+    vector<char>    operats;
+    string num;
     int res = 0;
+    
     for (int i = 0; i < s.size(); i++) {
         if(s[i] == '/' || s[i] == '*' || s[i] == '-' || s[i] == '+') {
             operats.push_back(s[i]);
+            s[i] = ' ';
         }
-        else if(s[i] >= '0' && s[i] <= '9') {
-            int num = stoi(string(1, s[i]));
-            nums.push_back(num);
-        }
+    }    
+    
+    stringstream ss(s);
+    while(ss >> num) {
+        nums.push_back(stoi(num));
     }
-    if(operats.size() == 0)
+    
+    if (operats.size() == 0)
         return stoi(s);
-    for (int i = 0; i < operats.size(); i++) {
-        if(operats[i] == '*') {
-            nums[i] *= nums[i + 1];
-            nums.erase(nums.begin() + i + 1);
-            operats.erase(operats.begin() + i);
-        }
-        else if(operats[i] == '/'){
-            nums[i] /= nums[i + 1];
-            nums.erase(nums.begin() + i + 1); 
-            operats.erase(operats.begin() + i);
-        }
+    for (int i = 0; i < operats.size(); ) {
+    if (operats[i] == '*') {
+        nums[i + 1] *= nums[i];
+        nums.erase(nums.begin() + i);
+        operats.erase(operats.begin() + i);
+    } else if (operats[i] == '/') {
+        nums[i] /= nums[i + 1];
+        nums.erase(nums.begin() + i + 1);
+        operats.erase(operats.begin() + i);
+    } else {
+        i++;
     }
-    // for(auto i : nums)
-    //     cout << i << " ";
-    // cout << endl;
-    // for(auto i : operats)
-    //     cout << i << " ";
-    // cout << endl;
+    }
     res = nums[0];
-    for(int i = 0; i < operats.size(); i++) {
+    
+    for (int i = 0; i < operats.size(); i++) {
         if (operats[i] == '+') {
             res += nums[i + 1];
         }
@@ -60,7 +62,7 @@ int calculate(string s) {
 
 int main()
 {
-    string str = "3+2*2";
+    string str = " 3/2 ";
     cout << calculate(str) << endl;
     return 0;
 }
