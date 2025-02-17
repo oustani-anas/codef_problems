@@ -27,8 +27,8 @@ public:
             && i != j != k != l){
                 vector<int> vect;
                 bool test = true;
-                cout << nums[i] << " " << nums[j] << " " << nums[k] 
-                << " " << nums[l] << endl;
+                // cout << nums[i] << " " << nums[j] << " " << nums[k] 
+                // << " " << nums[l] << endl;
                 vect.push_back(nums[i]);
                 vect.push_back(nums[j]);
                 vect.push_back(nums[k]);
@@ -55,7 +55,8 @@ int main()
     vector<int> vect = {2,2,2,2,2};
     vector<vector<int>> sol;
     sol = test.fourSum(vect, 0);
-    // for(auto i : sol) {
+    // for (auto i : sol) 
+    // {
     //     cout << endl;
     //     for(auto j : i) {
     //         cout << " " << i[j];
