@@ -23,9 +23,9 @@ using namespace std;
 class Solution {
 public:
     vector<string> letterCombinations(string digits) {
-        vector<string> result;
-        vector<string> str;
-        map<char, string> tell = {
+        vector <string> result;
+        vector <string> str;
+        map <char, string> tell = {
             {'2', "abc"},
             {'3', "def"},
             {'4', "ghi"},
@@ -35,25 +35,32 @@ public:
             {'8', "tuv"},
             {'9', "wxyz"},};
         
-        for(int i = 0; i < digits.length(); i++) {
+        for(int i = 0; i < digits.size(); i++) {
             str.push_back(tell[digits[i]]);
         }
-        for (int i = 0; i < str[0].size(); i++)
-        {
-            for (int j = 0; i < str[1].size(); i++)
-            {
-                
-            }
-            
+        
+
+
+        for( auto i : str){
+            for( char c : i)
+                cout << c;
+            cout << endl;
         }
         
         return result;
+    }
+
+    void generate() {
+
     }
 };
 
 
 int main() {
   Solution test;
-  string str = "98";
-  test.letterCombinations(str);  
+  string str = "29";
+  vector<string> ress;
+  ress = test.letterCombinations(str);
+  for(auto i : ress)
+    cout << i << " ";  
 }
