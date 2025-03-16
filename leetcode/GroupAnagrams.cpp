@@ -25,7 +25,8 @@ public:
         unordered_map<string, vector<string>> mapp;
         vector<vector<string>> result;
         
-        for (auto& word : strs) {
+        for (auto& word : strs) 
+        {
             string sortedWord = word;
             sort(sortedWord.begin(), sortedWord.end()); // Sort to get a unique key for anagrams
             mapp[sortedWord].push_back(word);
