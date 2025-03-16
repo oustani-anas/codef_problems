@@ -40,7 +40,7 @@ int main() {
     for(auto i : numss)
         cout << i << " ";
     // cin >> t;
-    /*while (t--) {
+    /* while (t--) {
         cin >> n;
         vector<int> vect(n);
         for(auto i = 0; i < n; i++)
