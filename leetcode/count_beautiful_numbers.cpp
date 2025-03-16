@@ -31,7 +31,7 @@ public:
                 result++;
             }
         }
-        // cout << "result = " << result;
+        //  cout << "result = " << result;
         return result;
     }
         bool count_sum_multi(int num) {
