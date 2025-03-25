@@ -1,3 +1,4 @@
+
 #include <iostream>
 #include <string>
 #include <vector>
@@ -22,8 +23,8 @@ using namespace std;
 class Solution {
 public:
     bool canJump(vector<int>& nums) {
-       // bool state = false;
-       int farthest = 0;
+        // bool state = false;
+        int farthest = 0;
         for (int i = 0; i < nums.size(); i++) 
         {
             if (i > farthest) return false;
@@ -41,6 +42,4 @@ int main() {
         cout << "True" << endl;
     else 
         cout << "False" << endl;
-    
-
 }
