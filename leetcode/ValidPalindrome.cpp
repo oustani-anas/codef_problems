@@ -22,28 +22,38 @@ using namespace std;
 class Solution {
 public:
     bool validPalindrome(string s) {
-        string revs = s;
-        int count = 0, n = s.size();
-        reverse(revs.begin(), revs.end());
+        int n = s.size();
         int i = 0, j = n - 1;
         while (j > i)
         {
             // cout << s[i] << " " << s[j] << endl;
-            if(s[i] != s[j])
-                count++;
+            if(s[i] != s[j]) {
+                if(IsPall(s, i + 1, j) || IsPall(s, i, j - 1))
+                    return true;
+                return false;
+            }
             i++;
             j--;
         }
-        // cout << "count = " << count << endl;
-        if (count >= 1)
-            return false;
         return true;
-    }   
+    }
+
+    bool IsPall(string &str, int b, int e) {
+        while (b < e)
+        {
+            if(str[b] != str[e])
+                return false;
+            b++;
+            e--;
+        }
+        return true;
+    }
 };
 
 int main() {
     Solution test;
-    test.validPalindrome("abcddcba");
-    cout << "second test: " << endl;
-    test.validPalindrome("abca");
+    cout << test.validPalindrome("abcddcba") << endl;
+    // cout << "second test: " << endl;
+    cout << test.validPalindrome("abca") << endl;
+    cout << test.validPalindrome("abc") << endl;
 }
