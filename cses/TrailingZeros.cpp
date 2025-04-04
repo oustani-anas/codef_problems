@@ -1,4 +1,4 @@
-
+#include <stack>
 #include <iostream>
 #include <string>
 #include <map>
@@ -11,14 +11,13 @@
 #define dd double
 #define endl '\n'
 
-
 using namespace std;
 
 int main()
 {
     ll n; cin >> n;
     ll sum = 0;
-    while(n > 0) {
+    while (n > 0) {
         n = n / 5;
         sum = sum + n;
     }
