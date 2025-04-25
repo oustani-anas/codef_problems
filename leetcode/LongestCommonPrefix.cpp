@@ -28,7 +28,7 @@ public:
         int count = 0;
         while(n--) {
             char ch = strs[0][count];
-            for (int i = 1; i < n; i++){
+            for (int i = 1; i < strs[0].size(); i++){
                 cout << i << " "  << strs[i][count] << " " << ch << endl;
                 if(strs[i][count] != ch)
                     return res;
