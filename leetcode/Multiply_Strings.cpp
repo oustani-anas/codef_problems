@@ -23,48 +23,32 @@ using namespace std;
 
 class Solution {
 public:
-    
-    ll number(string str) {
-        ll res = 0;
-        ll len = str.length();
-        for (char c : str) {
-            ll num;
-            len--;
-            num = (c - '0') * pow(10, len);
-            res += num;
-        }
-        return res;
-    }
-
     string multiply(string num1, string num2) {
-        string snum = "";
-        ll num = number(num1);
-        ll numm = number(num2);
-        ll res = num * numm, len = 0;
-        ll nlen = res;
-        cout << "res = " << res << endl; // 56008
-        cout << "len = " << len << endl;
-        
-        while(nlen) {
-            len++;
-            nlen = nlen / 10;
+        if (num1 == "0" || num2 == "0") return "0";
+
+        int n = num1.size(), m = num2.size();
+        vector<int> result(n + m, 0);
+
+        for (int i = n - 1; i >= 0; --i) {
+            for (int j = m - 1; j >= 0; --j) {
+                int mul = (num1[i] - '0') * (num2[j] - '0');
+                int sum = mul + result[i + j + 1];
+
+                result[i + j + 1] = sum % 10;
+                result[i + j] += sum / 10;
+            }
         }
-        
-        cout << "len = " << len << endl;
-        while(len--) {      
-            // len--;
-            ll num = res / pow(10, len);
-            cout << " num = " << num << endl; 
-            char c = '0' + num;
-            res = res % (ll)pow(10, len);
-            // cout << "c = " << c << endl;
-            // cout << "len = " << len;
-            snum += c;  
+
+        // Convert to string
+        string res = "";
+        for (int digit : result) {
+            if (!(res.empty() && digit == 0)) res += (digit + '0');
         }
-        // cout << "snum = " << snum << endl;
-        return snum;
+
+        return res.empty() ? "0" : res;
     }
 };
+
 
 int main() {
     std::ios::sync_with_stdio(false);
