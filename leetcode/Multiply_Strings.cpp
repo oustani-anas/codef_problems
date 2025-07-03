@@ -1,23 +1,23 @@
 
-#include <iostream>
-#include <string>
-#include <vector>
-#include <deque>
-#include <list>
-#include <forward_list>
-#include <set>
-#include <unordered_set>
-#include <map>
-#include <unordered_map>
-#include <stack>
-#include <queue>
-#include <algorithm>
-#include <bitset>
-#include <array>
-#include <cmath>
+# include <iostream>
+# include <string>
+# include <vector>
+# include <deque>
+# include <list>
+# include <forward_list>
+# include <set>
+# include <unordered_set>
+# include <map>
+# include <unordered_map>
+# include <stack>
+# include <queue>
+# include <algorithm>
+# include <bitset>
+# include <array>
+# include <cmath>
 
-#define ll long long
-#define endl '\n'
+# define ll long long
+# define endl '\n'
 
 using namespace std;
 
@@ -39,7 +39,6 @@ public:
             }
         }
 
-        // Convert to string
         string res = "";
         for (int digit : result) {
             if (!(res.empty() && digit == 0)) res += (digit + '0');
@@ -55,7 +54,6 @@ int main() {
     std::cin.tie(nullptr);
     
     Solution test;
-    // cout << test.multiply("2", "3") << endl;
     cout << test.multiply("408", "5") << endl;
     
     return 0;
