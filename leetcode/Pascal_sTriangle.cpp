@@ -22,34 +22,16 @@ using namespace std;
 
 class Solution {
 public:
-    vector < vector <int> > generate(int numRows) {
-        vector<vector<int>> res;
-        for (int i = 0; i < numRows; i++)
-        {
-            vector<int> row;
-            vector<int> lastr;
-            if (i == 0) 
-                res.push_back({1});   
-            else if (i == 1) 
-                res.push_back({1, 1});   
-            else {
-                for (int j = 0; j < i ; j++)
-                {
-                    lastr = res.back();
-                    if (j == 0)
-                        row.push_back(1);
-                    else 
-                        row.push_back(lastr[j - 1] + lastr[j]);
-                }
-                row.push_back(1);
-                res.push_back(row);
-            }    
+    vector < vector<int> > generate(int numRows) {
+        std::vector< std::vector<int> > res(numRows);
+        res[0] = {1};
+        for (size_t i = 1; i < numRows; ++i) {
+            res[i] = std::vector<int>(i + 1);
+            res[i][0] = 1;
+            res[i][i] = 1;
+            for (size_t j = 1; j < i; ++j)
+                res[i][j] = res[i - 1][j - 1] + res[i - 1][j];
         }
-        // for ( auto vect : res ) {
-        //     for ( auto n : vect )
-        //         cout << n << " ";
-        //     cout << endl;
-        // }
         return res;
     }
 };
