@@ -4,6 +4,7 @@
         "queue": "cpp",
         "algorithm": "cpp",
         "iostream": "cpp",
-        "string": "cpp"
+        "string": "cpp",
+        "list": "cpp"
     }
 }
