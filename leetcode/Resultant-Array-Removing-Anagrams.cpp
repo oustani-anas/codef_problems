@@ -22,16 +22,15 @@ using namespace std;
 
 class Solution {
 public:
-    // test case ["ab","bc","cb","ab","bc"]
     vector <string> removeAnagrams(vector<string>& words) {
         vector <string> res;
         res.push_back(words[0]);
         for (int i = 1; i < words.size(); i++) {
             string bword = words[i - 1];
-            sort(bword.begin(), bword.end());
+            sort (bword.begin(), bword.end());
             string word = words[i];
-            sort(word.begin(), word.end());
-            if(bword != word)
+            sort (word.begin(), word.end());
+            if (bword != word)
                 res.push_back(words[i]);
         }
         cout << endl;
