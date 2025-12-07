@@ -24,63 +24,35 @@ using namespace std;
 class Solution {
 public:
     int countPalindromicSubsequence(string s) {
-        map<char, vector<int>> appear;
-        set<vector<char>> subs;
-        int res = 0;
-        for (int i = 0; i < s.size(); i++)
-        {
-            appear[s[i]].push_back(i);
-        }
-        // for (const auto pair : appear) {
-        //     char key = pair.first;
-        //     vector<int> value = pair.second;
-
-        //     cout << "key = " << key << " value : ";
-        //     for(auto n : value)
-        //         cout << n << " ";
-        //     cout << endl; 
-        // }
+        // Store the first and last occurrence of each character
+        vector<int> first(26, -1);
+        vector<int> last(26, -1);
         
-        for (const auto pair : appear) {
-            char key = pair.first;
-            vector<int> value = pair.second;
-            vector<char> sub;
-            if(value.size() >= 2) {
-
-                char first = s[value[0]];
-                char last = s[value[value.size() - 1]];
-                sub = {first, '@', last};
-                for (int i = value[0] + 1; i < value[value.size() - 1]; i++)
-                {
-                    // cout << "s[i] = " << s[i] << " ";
-                    sub[1] = s[i];
-                    subs.insert(sub);
+        for (int i = 0; i < s.size(); i++) {
+            int curr = s[i] - 'a';
+            if (first[curr] == -1) {
+                first[curr] = i;
+            }
+            last[curr] = i;
+        }
+        
+        int totalUnique = 0;
+        
+        // Check each character from 'a' to 'z' as the boundary 'X'
+        for (int i = 0; i < 26; i++) {
+            if (first[i] != -1 && last[i] > first[i] + 1) {
+                // Find all unique characters between first[i] and last[i]
+                unordered_set<char> middleChars;
+                for (int j = first[i] + 1; j < last[i]; j++) {
+                    middleChars.insert(s[j]);
+                    // Optimization: if we found all 26, we can stop
+                    if (middleChars.size() == 26) break;
                 }
+                totalUnique += middleChars.size();
             }
         }
         
-        // cout << "map : " << endl;
-        // for( const auto pair : appear) {
-        //     char first = pair.first;
-        //     vector<int> second = pair.second;
-            
-        //     cout << first << " ";
-        //     for ( auto n : second )
-        //     cout << n << " ";
-        //     cout << endl;
-            
-        // }
-        // cout << "end map" << endl;
-        
-        // for( auto sb : subs){
-
-        //     for(auto c : sb)
-        //        cout << c;
-        //     cout << " ";
-        // }
-
-        // cout << "subs size = "<< subs.size() << endl;
-        return subs.size();
+        return totalUnique;
     }
 };
 
