@@ -1,23 +1,23 @@
 
 
-#include <iostream>
-#include <string>
-#include <vector>
-#include <deque>
-#include <list>
-#include <forward_list>
-#include <set>
-#include <unordered_set>
-#include <map>
-#include <unordered_map>
-#include <stack>
-#include <queue>
-#include <algorithm>
-#include <bitset>
-#include <array>
+# include <iostream>
+# include <string>
+# include <vector>
+# include <deque>
+# include <list>
+# include <forward_list>
+# include <set>
+# include <unordered_set>
+# include <map>
+# include <unordered_map>
+# include <stack>
+# include <queue>
+# include <algorithm>
+# include <bitset>
+# include <array>
 
-#define ll long long
-#define endl '\n'
+# define ll long long
+# define endl '\n'
 
 using namespace std;
 
@@ -50,25 +50,47 @@ public:
                 char first = s[value[0]];
                 char last = s[value[value.size() - 1]];
                 sub = {first, '@', last};
-                for (int i = 1; i < value.size() - 1; i++)
+                for (int i = value[0] + 1; i < value[value.size() - 1]; i++)
                 {
+                    // cout << "s[i] = " << s[i] << " ";
                     sub[1] = s[i];
+                    subs.insert(sub);
                 }
             }
-            subs.insert(sub);
         }
         
-        cout << "subs size = "<< subs.size() << endl;
-        return res;
+        // cout << "map : " << endl;
+        // for( const auto pair : appear) {
+        //     char first = pair.first;
+        //     vector<int> second = pair.second;
+            
+        //     cout << first << " ";
+        //     for ( auto n : second )
+        //     cout << n << " ";
+        //     cout << endl;
+            
+        // }
+        // cout << "end map" << endl;
+        
+        // for( auto sb : subs){
+
+        //     for(auto c : sb)
+        //        cout << c;
+        //     cout << " ";
+        // }
+
+        // cout << "subs size = "<< subs.size() << endl;
+        return subs.size();
     }
 };
 
 int main() {
+    
     std::ios::sync_with_stdio(false);
     std::cin.tie(nullptr);
     
     Solution test;
-    test.countPalindromicSubsequence("bbcbaba");
+    cout << test.countPalindromicSubsequence("bbcbaba");
     
     return 0;
 }

@@ -15,8 +15,8 @@
 # include <bitset>
 # include <array>
 
-#define ll long long
-#define endl '\n'
+# define ll long long
+# define endl '\n'
 
 class Solution {
 public:
